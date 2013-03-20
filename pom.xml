@@ -17,6 +17,7 @@
         <plugin.compiler.version>3.0</plugin.compiler.version>
         <plugin.helper.version>1.7</plugin.helper.version>
         <plugin.surefire.version>2.13</plugin.surefire.version>
+        <plugin.dependency.version>2.6</plugin.dependency.version>
 
         <!-- dependencies versions -->
         <dependency.simpleweb4j.version>0.0.1</dependency.simpleweb4j.version>
@@ -83,6 +84,19 @@
                         <goals>
                             <goal>single</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${plugin.dependency.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals><goal>copy-dependencies</goal></goals>
                     </execution>
                 </executions>
             </plugin>

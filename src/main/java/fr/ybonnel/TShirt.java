@@ -1,10 +1,5 @@
 package fr.ybonnel;
 
-import fr.ybonnel.simpleweb4j.exception.HttpErrorException;
-import fr.ybonnel.simpleweb4j.handlers.Response;
-import fr.ybonnel.simpleweb4j.handlers.Route;
-import fr.ybonnel.simpleweb4j.handlers.RouteParameters;
-
 import static fr.ybonnel.simpleweb4j.SimpleWeb4j.*;
 
 /**
@@ -31,6 +26,10 @@ public class TShirt {
     public static void main(String[] args) {
         // Default port 9999.
         // For main, we want to wait the stop.
-        startServer(Integer.getInteger("app.port", 9999), true);
+        int port =
+                Integer.getInteger("app.port", // Cloudbees
+                Integer.getInteger("PORT", // Heroku
+                9999));
+        startServer(port, true);
     }
 }
