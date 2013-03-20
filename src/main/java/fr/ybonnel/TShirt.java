@@ -31,6 +31,6 @@ public class TShirt {
     public static void main(String[] args) {
         // Default port 9999.
         // For main, we want to wait the stop.
-        startServer(9999, true);
+        startServer(Integer.getInteger("app_port", 9999), true);
     }
 }
