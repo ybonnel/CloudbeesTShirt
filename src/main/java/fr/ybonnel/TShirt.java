@@ -23,13 +23,25 @@ public class TShirt {
         start(waitStop);
     }
 
+    private static int getPort() {
+        // Heroku
+        String herokuPort = System.getenv("PORT");
+        if (herokuPort != null) {
+            return Integer.parseInt(herokuPort);
+        }
+
+        // Cloudbees
+        String cloudbeesPort = System.getProperty("app.port");
+        if (cloudbeesPort != null) {
+            return Integer.parseInt(cloudbeesPort);
+        }
+
+        // Default port;
+        return 9999;
+    }
+
     public static void main(String[] args) {
-        // Default port 9999.
         // For main, we want to wait the stop.
-        int port =
-                Integer.getInteger("app.port", // Cloudbees
-                Integer.getInteger("PORT", // Heroku
-                9999));
-        startServer(port, true);
+        startServer(getPort(), true);
     }
 }
